@@ -1,0 +1,14 @@
+## {.ncar-title-slide .ncar-no-logo}
+
+<div class="ncar-title">Downscaling from Global to Coastal Scales</div>
+<div class="ncar-subtitle"><strong>Methods for Climate Risk and Adaptation</strong></div>
+<div class="ncar-title-divider"></div>
+
+<div class="ncar-meta">
+Kyle Mandli<br/>
+SIAM GEO 2025
+</div>
+
+<div class="ncar-affil">
+  <img class="ncar-affil__logo" src="assets/logos/ncar_logo_white.png" alt="NCAR" />
+</div>

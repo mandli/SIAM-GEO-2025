@@ -1,0 +1,16 @@
+---
+format:
+  revealjs:
+    slide-number: true
+    controls: false
+    theme: theme/ncar.scss
+    include-after-body: footer.html
+    background-transition: none
+    embed-resources: false
+---
+
+{{< include slides/00-title.qmd >}}
+
+---
+
+{{< include slides/01-section.qmd >}}

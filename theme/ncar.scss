@@ -1,0 +1,223 @@
+/*-- scss:defaults --*/
+/* ============================================================
+   Minimal NCAR theme for Quarto + Reveal
+   - System fonts only
+   - NCAR-ish colors + cyan highlight + optional gold accent
+   - Top-right logo
+   - Slide numbers on (assumed set in _quarto.yml)
+   - A few layout knobs
+   ============================================================ */
+
+$body-bg: #ffffff;
+$body-color: #111111;
+
+$presentation-heading-color: #00357A;
+$link-color: #0057C2;
+$link-color-hover: #42C0FF;
+
+$presentation-font-size-root: 34px;
+
+/*-- scss:rules --*/
+
+/* ============================================================
+   TUNE HERE
+   ============================================================ */
+:root {
+    --ncar-primary: #00357A;
+    --ncar-secondary: #0057C2;
+    --ncar-bright: #42C0FF;
+    /* cyan highlight */
+    --ncar-gold: #C8A54B;
+    /* template-ish gold accent */
+
+    --ncar-ink: #111111;
+    --ncar-paper: #ffffff;
+
+    /* Global slide padding */
+    --ncar-pad-x: 2.4rem;
+    --ncar-pad-top: 2.0rem;
+    --ncar-pad-bottom: 2.6rem;
+
+    /* Reserve space for top-right logo */
+    --ncar-top-safe: 3.0rem;
+
+    /* Corner logo size */
+    --ncar-logo-h: 48px;
+
+    /* Media default max height (opt-in via .ncar-fit-h) */
+    --ncar-figure-max-h: 70vh;
+}
+
+/* ============================================================
+   Base typography + slide padding
+   ============================================================ */
+.reveal {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ncar-ink);
+    background: var(--ncar-paper);
+    /* the “letterbox” area by default */
+}
+
+.reveal section {
+    padding:
+        calc(var(--ncar-pad-top) + var(--ncar-top-safe)) var(--ncar-pad-x) var(--ncar-pad-bottom) var(--ncar-pad-x);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+    color: var(--ncar-primary);
+    letter-spacing: 0.2px;
+    margin-bottom: 0.35em;
+}
+
+.reveal ul {
+    margin-top: 0.55rem;
+}
+
+.reveal li {
+    margin: 0.33rem 0;
+}
+
+.reveal a {
+    text-decoration: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.reveal a:hover {
+    border-bottom-color: var(--ncar-bright);
+}
+
+/* ============================================================
+   Corner logo (injected via footer.html)
+   NOTE: your file name is ncar_logo.png
+   ============================================================ */
+.ncar-corner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.7rem 0.85rem;
+    z-index: 200;
+    pointer-events: none;
+}
+
+.ncar-corner__logo {
+    height: var(--ncar-logo-h);
+    width: auto;
+    opacity: 0.97;
+}
+
+/* Hide logo on slides that opt-out */
+html:has(.reveal section.present.ncar-no-logo) .ncar-corner {
+    display: none !important;
+}
+
+/* ============================================================
+   Title slide helpers
+   - Use .ncar-title-slide on the slide
+   - Also colors the letterbox area behind the slide canvas
+   ============================================================ */
+
+/* Make the letterbox background match title slide when it’s active */
+html:has(.reveal section.present.ncar-title-slide) .reveal {
+    background: var(--ncar-secondary) !important;
+    /* light-ish blue */
+}
+
+/* Title slide canvas background + centered text */
+section.ncar-title-slide {
+    background: var(--ncar-secondary);
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Title slide typography blocks (use <div>, not markdown headings) */
+section.ncar-title-slide .ncar-title {
+    font-size: 2.2em;
+    /* KNOB */
+    line-height: 1.08;
+    margin-bottom: 0.45rem;
+    color: #ffffff;
+}
+
+section.ncar-title-slide .ncar-subtitle {
+    font-size: 1.02em;
+    /* KNOB */
+    margin-bottom: 0.9rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+section.ncar-title-slide .ncar-meta {
+    font-size: 0.74em;
+    /* KNOB */
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+section.ncar-title-slide .ncar-title-divider {
+    width: 140px;
+    /* KNOB */
+    height: 5px;
+    /* KNOB */
+    margin: 0.8rem auto 1.0rem auto;
+    background: var(--ncar-gold);
+    border-radius: 3px;
+}
+
+/* Affiliation/logo inside title slide content (optional) */
+section.ncar-title-slide .ncar-affil {
+    margin-top: 1.0rem;
+}
+
+section.ncar-title-slide .ncar-affil__logo {
+    // height: 100px;
+    height: 3.0em;
+    /* KNOB */
+    width: auto;
+    opacity: 0.95;
+}
+
+/* ============================================================
+   Content knobs (use anywhere)
+   ============================================================ */
+.reveal img,
+.reveal video,
+.reveal svg,
+.reveal canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.ncar-w100 {
+    width: 100%;
+}
+
+.ncar-fit-h {
+    max-height: var(--ncar-figure-max-h);
+    width: auto;
+}
+
+.ncar-small {
+    font-size: 0.85em;
+}
+
+.ncar-tight ul {
+    margin-top: 0.35rem;
+}
+
+.ncar-tight li {
+    margin: 0.22rem 0;
+}
+
+.ncar-caption {
+    font-size: 0.65em;
+    opacity: 0.9;
+    margin-top: 0.45rem;
+}
+
+.ncar-callout {
+    border-left: 0.25rem solid var(--ncar-bright);
+    padding: 0.65rem 0.9rem;
+    background: rgba(245, 245, 245, 0.86);
+    border-radius: 0.55rem;
+}

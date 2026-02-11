@@ -1,0 +1,20 @@
+project:
+  type: default
+  output-dir: _site
+  resources:
+    - assets/**
+    - footer.html
+    - slides/**
+
+format:
+  revealjs:
+    theme: theme/ncar.scss
+    slide-number: true
+    include-after-body: footer.html
+    background-transition: none
+    embed-resources: false
+
+watch:
+  - slides/**
+  - theme/**
+  - footer.html
